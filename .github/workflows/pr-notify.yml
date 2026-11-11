@@ -1,0 +1,15 @@
+# Posts a Teams card when a PR targets develop. Logic lives in testing-pr-raising/teams-pr-automation.
+name: PR notify
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+
+jobs:
+  teams:
+    uses: testing-pr-raising/teams-pr-automation/.github/workflows/teams-pr-notify.yml@main
+    with:
+      base_branches: '["develop"]'
+      title_prefix: 'project-3'
+      default_mentions: '["Thamarai-selvan-G-Noukha"]'
+    secrets: inherit
